@@ -7,12 +7,213 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css" />
   <style>
+    :root {
+      --primary-color: #000;
+      --secondary-color: #fff;
+      /* TODO: Fix this */
+      --intermediate-color: #dddd;
+      --custom-border: 1px solid var(--primary-color);
+      --spacer-large: 32px;
+      --spacer-small: 16px;
+    }
+
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --primary-color: #fff;
+        --secondary-color: #000;
+      }
+    }
+
     * {
       font-family: sans-serif;
+      color: var(--primary-color);
+    }
+
+    body {
+      display: grid;
+      grid-template-rows: auto 1fr 80px;
+      padding: var(--spacer-large) var(--spacer-large) 0;
+      max-width: 1200px;
+      margin: auto;
+      background-color: var(--secondary-color);
+      color: var(--primary-color);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header p {
+      vertical-align: baseline;
+    }
+
+    main {
+      padding: var(--spacer-small) 0;
+    }
+
+    main section h1 {
+      width: max-content;
+      background-color: var(--secondary-color);
+      border-bottom: var(--custom-border);
+    }
+
+    main section>p {
+      margin-top: var(--spacer-small)
+    }
+
+    main section :last-child {
+      margin-bottom: var(--spacer-small);
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      bottom: 0;
+      background-color: var(--secondary-color);
+      border-top: var(--custom-border);
+    }
+
+    #nav>*+* {
+      margin-right: 12px;
+    }
+
+    #theme-chooser {
+      color: black
+    }
+
+    sticky {
+      display: block;
+      position: sticky;
+      top: 0;
+      background-color: var(--secondary-color);
+    }
+
+    .scroll-to-content {
+      scroll-margin-top: calc(var(--spacer-large) + var(--spacer-small));
+    }
+
+    a:hover {
+      background-color: var(--intermediate-color);
+    }
+
+    /* Probably want to disable for the nav links */
+    a:visited {
+      color: var(--intermediate-color);
     }
   </style>
 </head>
 
-<p>There will be something here soon.</p>
-<p>I promise.</p>
-<p>- Andrew</p>
+<header>
+  <h1>Andrew Chou</h1>
+  <p>Web nerd 🌐</p>
+</header>
+
+<main>
+  <section>
+    <sticky>
+      <h1>About me</h1>
+    </sticky>
+    <div id="about" class="scroll-to-content">
+      <p>
+        Hey, take a look at the earthlings. Goodbye! My dad once told me, laugh and the world laughs with you, Cry, and
+        I'll
+        give you something to cry about you little bastard! You really think you can fly that thing? Checkmate... Forget
+        the fat
+        lady! You're obsessed with the fat lady! Drive us out of here!
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <sticky>
+      <h1>Tech I've worked with</h1>
+    </sticky>
+    <div id="tech" class="scroll-to-content">
+      <ul>
+        <li>HTML/CSS/JS</li>
+        <li>React</li>
+        <li>React Native</li>
+        <li>Electron</li>
+        <li>GraphQL</li>
+        <li>Ruby (on Rails)</li>
+        <li>Relay</li>
+        <li>Python</li>
+        <li>Bash</li>
+        <li>CI/CD</li>
+        <li>Shitposting</li>
+        <li>HTML/CSS/JS</li>
+        <li>React</li>
+        <li>React Native</li>
+        <li>Electron</li>
+        <li>GraphQL</li>
+        <li>Ruby (on Rails)</li>
+        <li>Relay</li>
+        <li>Python</li>
+        <li>Bash</li>
+        <li>CI/CD</li>
+        <li>Shitposting</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <sticky>
+      <h1>Where I've worked</h1>
+    </sticky>
+    <div id="work" class="scroll-to-content">
+      <ul>
+        <li>Consider 2019 - 2020</li>
+        <li>Wayfair 2018 - 2019</li>
+        <li>Coding it Forward 2018</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div>
+      <h1>Profiles</h1>
+    </div>
+    <div id="profiles" class="scroll-to-content">
+      <ul>
+        <li><a href="https://twitter.com/_andrewchou">Twitter 🐦</a></li>
+        <li><a href="https://github.com/achou11">GitHub 👨🏻‍💻</a></li>
+        <li><a href="https://linkedin.com/in/achou11">LinkedIn 💼</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <sticky>
+      <h1>Projects</h1>
+    </sticky>
+    <div id="projects" class="scroll-to-content">
+      <ul>
+        <li><a href="https://twitter.com/_andrewchou">Spongemocker 🧽</a></li>
+        <li><a href="https://yeoldeyorker.hashbase.io">Ye Olde Yorker 📰</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div id="nav" role="nav">
+    <a href="#about">About me</a>
+    <a href="#tech">Tech</a>
+    <a href="#work">Work</a>
+    <a href="#profiles">Profiles</a>
+    <a href="#projects">Projects</a>
+  </div>
+  <div>
+    <label for="theme-chooser">Change theme: </label>
+    <select name="theme-chooser" id="theme-chooser">
+      <option selected value="system">System</option>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+    </select>
+  </div>
+</footer>
