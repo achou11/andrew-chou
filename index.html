@@ -8,42 +8,55 @@
   <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css" />
   <style>
     :root {
-      --primary-color: #000;
-      --secondary-color: #fff;
-      /* TODO: Fix this */
-      --intermediate-color: #dddd;
-      --custom-border: 1px solid var(--primary-color);
+      --black: #2c2c2c;
+      --white: #f1f1f1;
+      --primary-color: var(--black);
+      --secondary-color: var(--white);
+      --orange-color: #f88501;
+      --yellow-color: #ffdc40;
+      --custom-border: 2px solid var(--yellow-color);
       --spacer-large: 32px;
       --spacer-small: 16px;
     }
 
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --primary-color: #fff;
-        --secondary-color: #000;
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        scroll-behavior: auto;
       }
     }
 
     * {
-      font-family: sans-serif;
+      font-family: Verdana, Geneva, sans-serif;
       color: var(--primary-color);
+      scroll-behavior: smooth;
     }
 
     body {
       display: grid;
       grid-template-rows: auto 1fr 80px;
       padding: var(--spacer-large) var(--spacer-large) 0;
-      max-width: 1200px;
+      max-width: 1000px;
       margin: auto;
       background-color: var(--secondary-color);
       color: var(--primary-color);
+    }
+
+    body.dark {
+      --primary-color: var(--white);
+      --secondary-color: var(--black);
     }
 
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
+    }
+
+    @media screen and (max-width: 450px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
 
     header p {
@@ -58,6 +71,7 @@
       width: max-content;
       background-color: var(--secondary-color);
       border-bottom: var(--custom-border);
+      padding-top: calc(var(--spacer-small) / 2);
     }
 
     main section>p {
@@ -78,12 +92,13 @@
       border-top: var(--custom-border);
     }
 
-    #nav>*+* {
-      margin-right: 12px;
+    #footer-left {
+      max-width: 75%;
+      padding-inline-end: var(--spacer-small);
     }
 
-    #theme-chooser {
-      color: black
+    #footer-left>*+* {
+      margin-inline-start: 12px;
     }
 
     sticky {
@@ -94,23 +109,48 @@
     }
 
     .scroll-to-content {
-      scroll-margin-top: calc(var(--spacer-large) + var(--spacer-small));
+      scroll-margin-top: calc(var(--spacer-large) * 2);
     }
 
-    a:hover {
-      background-color: var(--intermediate-color);
+    a:hover,
+    a:active {
+      color: var(--black);
+      background-color: var(--yellow-color);
     }
 
-    /* Probably want to disable for the nav links */
-    a:visited {
-      color: var(--intermediate-color);
+    a:not(.nav-link):visited {
+      color: var(--orange-color);
+    }
+
+    #theme-toggle {
+      cursor: pointer;
+      text-align: center;
+      padding: calc(var(--spacer-small) / 4) calc(var(--spacer-small) / 2);
+      color: var(--secondary-color);
+      background-color: var(--primary-color);
+      border: 2px solid var(--secondary-color);
+      white-space: nowrap;
+    }
+
+    #theme-toggle:hover,
+    #theme-toggle:focus-within,
+    #theme-toggle:active {
+      color: var(--primary-color);
+      background-color: var(--secondary-color);
+      border-color: var(--primary-color);
+    }
+
+    a:focus,
+    #theme-toggle:focus-within {
+      outline: var(--yellow-color) dashed 2px;
+      outline-offset: 2px;
     }
   </style>
 </head>
 
 <header>
   <h1>Andrew Chou</h1>
-  <p>Web nerd 🌐</p>
+  <p>Web nerd <span aria-hidden="true">🌐</span></p>
 </header>
 
 <main>
@@ -118,71 +158,25 @@
     <sticky>
       <h1>About me</h1>
     </sticky>
-    <div id="about" class="scroll-to-content">
+    <div id="about" class="scroll-to-content" role="none">
       <p>
-        Hey, take a look at the earthlings. Goodbye! My dad once told me, laugh and the world laughs with you, Cry, and
-        I'll
-        give you something to cry about you little bastard! You really think you can fly that thing? Checkmate... Forget
-        the fat
-        lady! You're obsessed with the fat lady! Drive us out of here!
+        I'm a software engineer and open web enthusiast. I love to explore the various corners of the internet and the
+        diversity of programming always captures my curiosity. Most of my experience is in web development, primarily
+        with front-end technologies. I'm also fascinated with geospatial and peer-to-peer (P2P) technologies and I would
+        love to work in those domains some time in the future.
       </p>
     </div>
   </section>
 
   <section>
     <sticky>
-      <h1>Tech I've worked with</h1>
+      <h1>Social profiles</h1>
     </sticky>
-    <div id="tech" class="scroll-to-content">
+    <div id="social" class="scroll-to-content" role="none">
       <ul>
-        <li>HTML/CSS/JS</li>
-        <li>React</li>
-        <li>React Native</li>
-        <li>Electron</li>
-        <li>GraphQL</li>
-        <li>Ruby (on Rails)</li>
-        <li>Relay</li>
-        <li>Python</li>
-        <li>Bash</li>
-        <li>CI/CD</li>
-        <li>Shitposting</li>
-        <li>HTML/CSS/JS</li>
-        <li>React</li>
-        <li>React Native</li>
-        <li>Electron</li>
-        <li>GraphQL</li>
-        <li>Ruby (on Rails)</li>
-        <li>Relay</li>
-        <li>Python</li>
-        <li>Bash</li>
-        <li>CI/CD</li>
-        <li>Shitposting</li>
-      </ul>
-    </div>
-  </section>
-
-  <section>
-    <sticky>
-      <h1>Where I've worked</h1>
-    </sticky>
-    <div id="work" class="scroll-to-content">
-      <ul>
-        <li>Consider 2019 - 2020</li>
-        <li>Wayfair 2018 - 2019</li>
-        <li>Coding it Forward 2018</li>
-      </ul>
-    </div>
-  </section>
-
-  <section>
-    <div>
-      <h1>Profiles</h1>
-    </div>
-    <div id="profiles" class="scroll-to-content">
-      <ul>
-        <li><a href="https://twitter.com/_andrewchou">Twitter 🐦</a></li>
-        <li><a href="https://github.com/achou11">GitHub 👨🏻‍💻</a></li>
-        <li><a href="https://linkedin.com/in/achou11">LinkedIn 💼</a></li>
+        <li><a href="https://twitter.com/_andrewchou">Twitter <span aria-hidden="true">🐦</span></a></li>
+        <li><a href="https://github.com/achou11">GitHub <span aria-hidden="true">👨🏻‍💻</span></a></li>
+        <li><a href="https://linkedin.com/in/achou11">LinkedIn <span aria-hidden="true">💼</span></a></li>
       </ul>
     </div>
   </section>
@@ -191,29 +185,108 @@
     <sticky>
       <h1>Projects</h1>
     </sticky>
-    <div id="projects" class="scroll-to-content">
+    <div id="projects" class="scroll-to-content" role="none">
       <ul>
-        <li><a href="https://twitter.com/_andrewchou">Spongemocker 🧽</a></li>
-        <li><a href="https://yeoldeyorker.hashbase.io">Ye Olde Yorker 📰</a></li>
+        <li><a href="https://spongemocker.hashbase.io">Spongemocker <span aria-hidden="true">🧽</span></a></li>
+        <li><a href="https://yeoldeyorker.hashbase.io">Ye Olde Yorker <span aria-hidden="true">📰</span></a></li>
+        <li><a href="https://nonetoohappy.buzz">none too happy <span aria-hidden="true">🐝</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <sticky>
+      <h1>Tech experience</h1>
+    </sticky>
+    <div id="tech" class="scroll-to-content" role="none">
+      <p>I'm comfortable with:</p>
+      <ul>
+        <li>HTML/CSS/JavaScript</li>
+        <li>React</li>
+        <li>React Native</li>
+        <li>Electron</li>
+        <li>GraphQL (e.g. Relay)</li>
+        <li>CSS-in-JS (e.g. Emotion)</li>
+        <li>Git workflows</li>
+      </ul>
+
+      <p>I can at least find my way around:</p>
+      <ul>
+        <li>Shell scripting (e.g. Bash)</li>
+        <li>Ruby (on Rails)</li>
+        <li>Python</li>
+        <li>Database querying and management (e.g. SQL)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <sticky>
+      <h1>Work experience</h1>
+    </sticky>
+    <div id="work" class="scroll-to-content" role="none">
+      <ul>
+        <li><b>Consider</b> (Feb 2019 – Mar 2020)</li>
+        <li><b>Wayfair</b> (Oct 2018 – Feb 2019)</li>
+        <li><b>Coding it Forward</b> (Jun 2018 – Aug 2018)</li>
       </ul>
     </div>
   </section>
 </main>
 
 <footer>
-  <div id="nav" role="nav">
-    <a href="#about">About me</a>
-    <a href="#tech">Tech</a>
-    <a href="#work">Work</a>
-    <a href="#profiles">Profiles</a>
-    <a href="#projects">Projects</a>
-  </div>
-  <div>
-    <label for="theme-chooser">Change theme: </label>
-    <select name="theme-chooser" id="theme-chooser">
-      <option selected value="system">System</option>
-      <option value="light">Light</option>
-      <option value="dark">Dark</option>
-    </select>
-  </div>
+  <section id="footer-left" role="nav">
+    <a class="nav-link" href="#about" tabindex="0">About</a>
+    <a class="nav-link" href="#social" tabindex="0">Social</a>
+    <a class="nav-link" href="#projects" tabindex="0">Projects</a>
+    <a class="nav-link" href="#tech" tabindex="0">Tech</a>
+    <a class="nav-link" href="#work" tabindex="0">Work</a>
+    <a id="source-url" class="nav-link" href="https://github.com/achou11/andrew-chou" tabindex="0">Source</a>
+  </section>
+  <section id="footer-right">
+    <button id="theme-toggle">Dark theme</button>
+  </section>
 </footer>
+
+<script type="text/javascript">
+  const themeToggle = document.getElementById("theme-toggle")
+
+  const getCurrentTheme = () =>
+    document.body.className === "dark" ? "dark" : "light"
+
+  const changeTheme = newTheme => {
+    if (newTheme === "dark") {
+      themeToggle.innerText = "Light theme"
+      document.body.classList.add("dark")
+    } else if (newTheme === "light") {
+      themeToggle.innerText = "Dark theme"
+      document.body.classList.remove("dark")
+    }
+  }
+
+  const insertDatSourceUrl = () => {
+    const sourceUrl = document.getElementById('source-url')
+    if (sourceUrl) {
+      sourceUrl.href = `beaker://library/${window.location.origin}`
+    }
+  }
+
+  themeToggle.addEventListener("click", () => {
+    if (getCurrentTheme() === "dark") {
+      changeTheme("light")
+    } else {
+      changeTheme("dark")
+    }
+  })
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const query = window.matchMedia('(prefers-color-scheme: dark)')
+    if (query.matches) {
+      changeTheme("dark")
+    }
+
+    if (window.DatArchive && window.location.origin.startsWith('dat:')) {
+      insertDatSourceUrl()
+    }
+  })
+</script>
