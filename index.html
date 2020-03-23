@@ -8,13 +8,13 @@
   <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css" />
   <style>
     :root {
-      --black: #2c2c2c;
+      --black: #1f1f1f;
       --white: #f1f1f1;
+      --orange: #f88501;
+      --yellow: #ffdc40;
       --primary-color: var(--black);
       --secondary-color: var(--white);
-      --orange-color: #f88501;
-      --yellow-color: #ffdc40;
-      --custom-border: 2px solid var(--yellow-color);
+      --custom-border: 2px solid var(--yellow);
       --spacer-large: 32px;
       --spacer-small: 16px;
       --max-content-width: 1000px;
@@ -143,11 +143,11 @@
     a:hover,
     a:active {
       color: var(--black);
-      background-color: var(--yellow-color);
+      background-color: var(--yellow);
     }
 
     a:not(.nav-link):visited {
-      color: var(--orange-color);
+      color: var(--orange);
     }
 
     #theme-toggle {
@@ -170,7 +170,7 @@
 
     a:focus,
     #theme-toggle:focus-within {
-      outline: var(--yellow-color) dashed 2px;
+      outline: var(--yellow) dashed 2px;
       outline-offset: 2px;
     }
   </style>
