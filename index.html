@@ -17,6 +17,8 @@
       --custom-border: 2px solid var(--yellow-color);
       --spacer-large: 32px;
       --spacer-small: 16px;
+      --max-content-width: 1000px;
+      --footer-height: 80px;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -33,9 +35,9 @@
 
     body {
       display: grid;
-      grid-template-rows: auto 1fr 80px;
+      grid-template-rows: auto 1fr var(--footer-height);
       padding: var(--spacer-large) var(--spacer-large) 0;
-      max-width: 1000px;
+      max-width: var(--max-content-width);
       margin: auto;
       background-color: var(--secondary-color);
       color: var(--primary-color);
@@ -83,12 +85,27 @@
     }
 
     footer {
+      position: fixed;
+      height: var(--footer-height);
+      display: block;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: var(--secondary-color);
+    }
+
+    footer>div {
+      margin: auto;
+      height: 100%;
+      max-width: var(--max-content-width);
+      padding: 0 var(--spacer-large);
+    }
+
+    footer>div>div {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: sticky;
-      bottom: 0;
-      background-color: var(--secondary-color);
+      height: 100%;
       border-top: var(--custom-border);
     }
 
@@ -235,17 +252,21 @@
 </main>
 
 <footer>
-  <section id="footer-left" role="nav">
-    <a class="nav-link" href="#about" tabindex="0">About</a>
-    <a class="nav-link" href="#social" tabindex="0">Social</a>
-    <a class="nav-link" href="#projects" tabindex="0">Projects</a>
-    <a class="nav-link" href="#tech" tabindex="0">Tech</a>
-    <a class="nav-link" href="#work" tabindex="0">Work</a>
-    <a id="source-url" class="nav-link" href="https://github.com/achou11/andrew-chou" tabindex="0">Source</a>
-  </section>
-  <section id="footer-right">
-    <button id="theme-toggle">Dark theme</button>
-  </section>
+  <div>
+    <div>
+      <section id="footer-left" role="nav">
+        <a class="nav-link" href="#about" tabindex="0">About</a>
+        <a class="nav-link" href="#social" tabindex="0">Social</a>
+        <a class="nav-link" href="#projects" tabindex="0">Projects</a>
+        <a class="nav-link" href="#tech" tabindex="0">Tech</a>
+        <a class="nav-link" href="#work" tabindex="0">Work</a>
+        <a id="source-url" class="nav-link" href="https://github.com/achou11/andrew-chou" tabindex="0">Source</a>
+      </section>
+      <section id="footer-right">
+        <button id="theme-toggle">Dark theme</button>
+      </section>
+    </div>
+  </div>
 </footer>
 
 <script type="text/javascript">
