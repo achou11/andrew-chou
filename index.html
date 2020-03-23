@@ -109,13 +109,24 @@
       border-top: var(--custom-border);
     }
 
-    #footer-left {
+    nav {
       max-width: 75%;
       padding-inline-end: var(--spacer-small);
     }
 
-    #footer-left>*+* {
+    nav ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    nav ul>*+* {
       margin-inline-start: 12px;
+    }
+
+    nav ul li {
+      display: inline-block;
     }
 
     sticky {
@@ -254,17 +265,18 @@
 <footer>
   <div>
     <div>
-      <section id="footer-left" role="nav">
-        <a class="nav-link" href="#about" tabindex="0">About</a>
-        <a class="nav-link" href="#social" tabindex="0">Social</a>
-        <a class="nav-link" href="#projects" tabindex="0">Projects</a>
-        <a class="nav-link" href="#tech" tabindex="0">Tech</a>
-        <a class="nav-link" href="#work" tabindex="0">Work</a>
-        <a id="source-url" class="nav-link" href="https://github.com/achou11/andrew-chou" tabindex="0">Source</a>
-      </section>
-      <section id="footer-right">
-        <button id="theme-toggle">Dark theme</button>
-      </section>
+      <nav>
+        <ul>
+          <li><a class="nav-link" href="#about" tabindex="0">About</a></li>
+          <li><a class="nav-link" href="#social" tabindex="0">Social</a></li>
+          <li><a class="nav-link" href="#projects" tabindex="0">Projects</a></li>
+          <li><a class="nav-link" href="#tech" tabindex="0">Tech</a></li>
+          <li><a class="nav-link" href="#work" tabindex="0">Work</a></li>
+          <li><a id="source-url" class="nav-link" href="https://github.com/achou11/andrew-chou" tabindex="0">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <button id="theme-toggle">Dark theme</button>
     </div>
   </div>
 </footer>
