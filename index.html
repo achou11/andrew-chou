@@ -176,15 +176,6 @@
       outline: var(--yellow) dashed 2px;
       outline-offset: 2px;
     }
-
-    .visually-hidden {
-      position: absolute !important;
-      clip: rect(1px, 1px, 1px, 1px) !important;
-      padding: 0 !important;
-      border: 0 !important;
-      width: 1px !important;
-      overflow: hidden !important;
-    }
   </style>
 </head>
 
@@ -284,15 +275,7 @@
           <li><a class="nav-link" href="#projects" tabindex="0">Projects</a></li>
           <li><a class="nav-link" href="#tech" tabindex="0">Tech</a></li>
           <li><a class="nav-link" href="#work" tabindex="0">Work</a></li>
-          <li>
-            <a id="source-url" class="nav-link" href="https://github.com/achou11/andrew-chou" tabindex="0">Source</a>
-          </li>
-          <li>
-            <a href="https://webring.xxiivv.com/#random" target="_blank" rel="noopener noreferrer" tabindex="0">
-              <span class="visually-hidden">Enter the webring</span>
-              <img id="webring" alt="webring icon" src='https://webring.xxiivv.com/icon.black.svg' height="24px"
-                width="24px" />
-            </a>
+          <li><a id="source-url" class="nav-link" href="https://github.com/achou11/andrew-chou" tabindex="0">Source</a>
           </li>
         </ul>
       </nav>
@@ -303,22 +286,16 @@
 
 <script type="text/javascript">
   const themeToggle = document.getElementById("theme-toggle")
-  const webring = document.getElementById("webring")
 
   const getCurrentTheme = () =>
     document.body.className === "dark" ? "dark" : "light"
 
-  const getWebringIconSrc = theme => `https://webring.xxiivv.com/icon.${theme === "dark" ? "white" : "black"}.svg`
-
   const changeTheme = newTheme => {
-    const webringIconSrc = getWebringIconSrc(newTheme)
     if (newTheme === "dark") {
       themeToggle.innerText = "Light theme"
-      webring.setAttribute("src", webringIconSrc)
       document.body.classList.add("dark")
     } else if (newTheme === "light") {
       themeToggle.innerText = "Dark theme"
-      webring.setAttribute("src", webringIconSrc)
       document.body.classList.remove("dark")
     }
   }
