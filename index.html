@@ -36,6 +36,10 @@
       scroll-behavior: smooth;
     }
 
+    * :not(a):not(button) {
+      transition: background-color 0.2s ease-in;
+    }
+
     body {
       display: grid;
       grid-template-rows: auto 1fr var(--footer-height);
