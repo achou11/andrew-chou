@@ -180,6 +180,18 @@
       outline: var(--yellow) dashed 2px;
       outline-offset: 2px;
     }
+
+    li[data-emoji] {
+      list-style: none;
+    }
+
+    li[data-emoji]::before {
+      content: attr(data-emoji);
+      display: inline-flex;
+      justify-content: center;
+      margin-left: -2em;
+      width: 4ch;
+    }
   </style>
 </head>
 
@@ -209,9 +221,10 @@
     </sticky>
     <div id="projects" class="scroll-to-content" role="none">
       <ul>
-        <li><a href="https://spongemocker.hashbase.io">Spongemocker <span aria-hidden="true">🧽</span></a></li>
-        <li><a href="https://yeoldeyorker.hashbase.io">Ye Olde Yorker <span aria-hidden="true">📰</span></a></li>
-        <li><a href="https://nonetoohappy.buzz">none too happy <span aria-hidden="true">🐝</span></a></li>
+        <li data-emoji="🐝"><a href="https://nonetoohappy.buzz">none too happy</a></li>
+        <li data-emoji="📄"><a href="https://single-file.hashbase.io">The Single File Philosophy</a></li>
+        <li data-emoji="🧽"><a href="https://spongemocker.hashbase.io">Spongemocker</a></li>
+        <li data-emoji="📰"><a href="https://yeoldeyorker.hashbase.io">Ye Olde Yorker</a></li>
       </ul>
     </div>
   </section>
@@ -248,9 +261,9 @@
     </sticky>
     <div id="work" class="scroll-to-content" role="none">
       <ul>
-        <li><b>Consider</b> (Feb 2019 – Mar 2020)</li>
-        <li><b>Wayfair</b> (Oct 2018 – Feb 2019)</li>
-        <li><b>Coding it Forward</b> (Jun 2018 – Aug 2018)</li>
+        <li data-emoji="💌"><b>Consider</b> (Feb 2019 – Mar 2020)</li>
+        <li data-emoji="🏠"><b>Wayfair</b> (Oct 2018 – Feb 2019)</li>
+        <li data-emoji="🇺🇸"><b>Coding it Forward</b> (Jun 2018 – Aug 2018)</li>
       </ul>
     </div>
   </section>
@@ -261,11 +274,11 @@
     </sticky>
     <div id="social" class="scroll-to-content" role="none">
       <ul>
-        <li><a href="https://are.na/andrew-chou">Are.na <span aria-hidden="true">✶✶</span></a></li>
-        <li><a href="https://github.com/achou11">GitHub <span aria-hidden="true">👨🏻‍💻</span></a></li>
-        <li><a href="https://linkedin.com/in/achou11">LinkedIn <span aria-hidden="true">💼</span></a></li>
-        <li><a href="https://twitter.com/_andrewchou">Twitter <span aria-hidden="true">🐦</span></a></li>
-        <li><a href="https://vimeo.com/andrewchou">Vimeo <span aria-hidden="true">📼</span></a></li>
+        <li data-emoji="✶✶"><a href="https://are.na/andrew-chou">Are.na</a></li>
+        <li data-emoji="👨🏻‍💻"><a href="https://github.com/achou11">GitHub</a></li>
+        <li data-emoji="💼"><a href="https://linkedin.com/in/achou11">LinkedIn</a></li>
+        <li data-emoji="🐦"><a href="https://twitter.com/_andrewchou">Twitter</a></li>
+        <li data-emoji="📼"><a href="https://vimeo.com/andrewchou">Vimeo</a></li>
       </ul>
     </div>
   </section>
