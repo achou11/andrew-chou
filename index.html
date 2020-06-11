@@ -55,6 +55,11 @@
       --secondary-color: var(--black);
     }
 
+    body.dark-init,
+    body.dark-init * {
+      transition: none;
+    }
+
     header {
       display: flex;
       justify-content: space-between;
@@ -308,15 +313,18 @@
   const themeToggle = document.getElementById("theme-toggle")
 
   const getCurrentTheme = () =>
-    document.body.className === "dark" ? "dark" : "light"
+    document.body.classList.contains("dark") ? "dark" : "light"
 
-  const changeTheme = newTheme => {
+  const changeTheme = (newTheme, init = false) => {
     if (newTheme === "dark") {
       themeToggle.innerText = "Light theme"
       document.body.classList.add("dark")
+      if (init) {
+        document.body.classList.add("dark-init")
+      }
     } else if (newTheme === "light") {
       themeToggle.innerText = "Dark theme"
-      document.body.classList.remove("dark")
+      document.body.classList.remove("dark", "dark-init")
     }
   }
 
@@ -335,14 +343,16 @@
     }
   })
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const query = window.matchMedia('(prefers-color-scheme: dark)')
-    if (query.matches) {
-      changeTheme("dark")
-    }
+  document.addEventListener("readystatechange", event => {
+    if (event.target.readyState === "interactive") {
+      const query = window.matchMedia('(prefers-color-scheme: dark)')
+      if (query.matches) {
+        changeTheme("dark", true)
+      }
 
-    if (window.DatArchive && window.location.origin.startsWith('dat:')) {
-      insertDatSourceUrl()
+      if (window.DatArchive && window.location.origin.startsWith('dat:')) {
+        insertDatSourceUrl()
+      }
     }
   })
 </script>
