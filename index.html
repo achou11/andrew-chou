@@ -8,7 +8,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
   <meta name="description" content="Andrew Chou's personal site 2.0">
-  <link rel="stylesheet" href="https://unpkg.com/modern-css-reset@1.1.0/dist/reset.min.css" />
   <style>
     :root {
       --black: #1f1f1f;
@@ -24,8 +23,44 @@
       --footer-height: 80px;
     }
 
+    /*** 
+      Many of these rules are adapted or straight up taken from Andy Bell's Modern CSS reset
+      https://github.com/hankchizljaw/modern-css-reset/ 
+    ***/
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    ul[class],
+    ol[class] {
+      padding: 0;
+    }
+
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    p {
+      margin: 0;
+    }
+
+    /* A elements that don't have a class get default styles */
+    a:not([class]) {
+      text-decoration-skip-ink: auto;
+    }
+
+    button {
+      font: inherit;
+    }
+
     @media (prefers-reduced-motion: reduce) {
-      * {
+      html {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
         scroll-behavior: auto;
       }
     }
@@ -33,14 +68,20 @@
     * {
       font-family: Verdana, Geneva, sans-serif;
       color: var(--primary-color);
-      scroll-behavior: smooth;
     }
 
     * :not(a):not(button) {
       transition: background-color 0.2s ease-in;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
+      min-height: 100vh;
+      text-rendering: optimizeSpeed;
+      line-height: 1.5;
       display: grid;
       grid-template-rows: auto 1fr var(--footer-height);
       padding: var(--spacer-large) var(--spacer-large) 0;
@@ -48,6 +89,7 @@
       margin: auto;
       background-color: var(--secondary-color);
       color: var(--primary-color);
+      font-size: 1.2rem;
     }
 
     body.dark {
@@ -104,6 +146,7 @@
       left: 0;
       width: 100%;
       background-color: var(--secondary-color);
+      font-size: 1rem;
     }
 
     footer>div {
