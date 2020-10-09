@@ -12,11 +12,13 @@
     :root {
       --black: #1f1f1f;
       --white: #f1f1f1;
+      --grey: #8b8b8b;
       --orange: #f88501;
       --yellow: #ffdc40;
       --primary-color: var(--black);
       --secondary-color: var(--white);
-      --custom-border: 2px solid var(--yellow);
+      --primary-accent-color: var(--orange);
+      --secondary-accent-color: var(--yellow);
       --spacer-large: 32px;
       --spacer-small: 16px;
       --max-content-width: 1000px;
@@ -42,8 +44,7 @@
     h1,
     h2,
     h3,
-    h4,
-    p {
+    h4 {
       margin: 0;
     }
 
@@ -66,7 +67,7 @@
     }
 
     * {
-      font-family: Verdana, Geneva, sans-serif;
+      font-family: Geneva, sans-serif;
       color: var(--primary-color);
     }
 
@@ -79,6 +80,7 @@
     }
 
     body {
+      --custom-border: 2px solid var(--primary-accent-color);
       min-height: 100vh;
       text-rendering: optimizeSpeed;
       line-height: 1.5;
@@ -95,6 +97,8 @@
     body.dark {
       --primary-color: var(--white);
       --secondary-color: var(--black);
+      --primary-accent-color: var(--yellow);
+      --secondary-accent-color: var(--orange);
     }
 
     body.dark-init,
@@ -113,10 +117,6 @@
         flex-direction: column;
         align-items: flex-start;
       }
-    }
-
-    header p {
-      vertical-align: baseline;
     }
 
     main {
@@ -195,14 +195,15 @@
       scroll-margin-top: calc(var(--spacer-large) * 2);
     }
 
+    a:not(.nav-link):visited {
+      color: var(--grey);
+    }
+
+    a:visited:hover,
     a:hover,
     a:active {
       color: var(--black);
-      background-color: var(--yellow);
-    }
-
-    a:not(.nav-link):visited {
-      color: var(--orange);
+      background-color: var(--secondary-accent-color);
     }
 
     #theme-toggle {
@@ -225,7 +226,7 @@
 
     a:focus,
     #theme-toggle:focus-within {
-      outline: var(--yellow) dashed 2px;
+      outline: var(--primary-accent-color) dashed 2px;
       outline-offset: 2px;
     }
 
@@ -245,21 +246,44 @@
 
 <header>
   <h1>Andrew Chou</h1>
-  <p>Web nerd <span aria-hidden="true">🌐</span></p>
 </header>
 
 <main>
   <section>
     <sticky>
-      <h1>About me</h1>
+      <h1>About</h1>
     </sticky>
     <div id="about" class="scroll-to-content" role="none">
       <p>
-        I'm a software engineer and open web enthusiast. I love to explore the various corners of the internet and the
-        diversity of programming always captures my curiosity. Most of my experience is in web development, primarily
-        with front-end technologies. I'm also fascinated with geospatial and peer-to-peer (P2P) technologies and I would
-        love to work in those domains some time in the future.
+        I'm a software engineer, open web enthusiast, and digital explorer. I love to venture into the various corners
+        of the internet and the diversity of programming always captures my curiosity. Most of my experience is in web
+        development, primarily with front-end technologies. I'm also fascinated with geospatial and peer-to-peer (P2P)
+        technologies and I would love to work in those domains some time in the future.
       </p>
+      <p>Things I've been <em>thinking</em> about recently:</p>
+      <ul>
+        <li>Addressing climate change and environmental sustainability challenges as a technologist</li>
+      </ul>
+      <p>Things I've been <em>learning</em> recently:</p>
+      <ul>
+        <li>Creative coding in the form of generative art (via <a href="https://p5js.org/">p5.js</a>)</li>
+        <li>Creating maps and geospatial applications (via <a href="https://leafletjs.com/">Leaflet</a>)</li>
+        <li>Various programming languages (currently
+          <a href="https:/elixir-lang.org">Elixir</a>,
+          <a href="https://erlang.org">Erlang</a>,
+          <a href="https://kotlinlang.org">Kotlin</a>,
+          <a href="https://racket-lang.org">Racket</a>,
+          <a href="https://www.typescriptlang.org">TypeScript</a>,
+          <a href="https://ziglang.org">Zig</a>)
+        </li>
+        <li>Various JavaScript libraries for building user interfaces (currently
+          <a href="https://cycle.js.org/">Cycle.js</a>,
+          <a href="https://moonjs.org">Moon</a>,
+          <a href="https://sinuous.dev">Sinuous</a>,
+          <a href="https://svelte.dev">Svelte</a>,
+          <a href="https://vuejs.org">Vue.js</a>)
+        </li>
+      </ul>
     </div>
   </section>
 
@@ -279,7 +303,23 @@
 
   <section>
     <sticky>
-      <h1>Tech experience</h1>
+      <h1>Work</h1>
+    </sticky>
+    <div id="work" class="scroll-to-content" role="none">
+      <ul>
+        <li data-emoji="🐣">Software engineer @ <a href="https://hatchcard.com/">Hatch</a> (Oct 2020 – Current)</li>
+        <li data-emoji="💌">Software engineer @ <a href="https://consider.co">Consider</a> (Feb 2019 – Mar 2020)</li>
+        <li data-emoji="🏠">Software engineer @ <a href="https://wayfair.com">Wayfair</a> (Oct 2018 – Feb 2019)</li>
+        <li data-emoji="🇺🇸">Civic Digital Fellow @ <a href="https://www.codingitforward.com/">Coding it Forward</a>
+          (Jun 2018 – Aug 2018)
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <sticky>
+      <h1>Tech</h1>
     </sticky>
     <div id="tech" class="scroll-to-content" role="none">
       <p>I'm comfortable with:</p>
@@ -292,7 +332,6 @@
         <li>CSS-in-JS (e.g. Emotion)</li>
         <li>Git workflows</li>
       </ul>
-
       <p>I can at least find my way around:</p>
       <ul>
         <li>Shell scripting (e.g. Bash)</li>
@@ -305,21 +344,7 @@
 
   <section>
     <sticky>
-      <h1>Work experience</h1>
-    </sticky>
-    <div id="work" class="scroll-to-content" role="none">
-      <ul>
-        <li data-emoji="🐣"><b>Hatch</b> (Oct 2020 – Current)</li>
-        <li data-emoji="💌"><b>Consider</b> (Feb 2019 – Mar 2020)</li>
-        <li data-emoji="🏠"><b>Wayfair</b> (Oct 2018 – Feb 2019)</li>
-        <li data-emoji="🇺🇸"><b>Coding it Forward</b> (Jun 2018 – Aug 2018)</li>
-      </ul>
-    </div>
-  </section>
-
-  <section>
-    <sticky>
-      <h1>Social profiles</h1>
+      <h1>Social</h1>
     </sticky>
     <div id="social" class="scroll-to-content" role="none">
       <ul>
@@ -341,8 +366,8 @@
         <ul>
           <li><a class="nav-link" href="#about" tabindex="0">About</a></li>
           <li><a class="nav-link" href="#projects" tabindex="0">Projects</a></li>
-          <li><a class="nav-link" href="#tech" tabindex="0">Tech</a></li>
           <li><a class="nav-link" href="#work" tabindex="0">Work</a></li>
+          <li><a class="nav-link" href="#tech" tabindex="0">Tech</a></li>
           <li><a class="nav-link" href="#social" tabindex="0">Social</a></li>
           <li><a id="source-url" class="nav-link" href="https://github.com/achou11/andrew-chou" tabindex="0">Source</a>
           </li>
